@@ -48,7 +48,7 @@ const ChatbotPage = () => {
   
   // Fetch menu
   useEffect(() => {
-    fetch('http://localhost:8000/menu')
+    fetch(`${process.env.NEXT_PUBLIC_BACKEND_URL}/menu`)
       .then(res => res.json())
       .then(data => setMenu(data.menu || []));
   }, []);
@@ -70,7 +70,7 @@ const ChatbotPage = () => {
     }
     
     try {
-      const response = await fetch('http://localhost:8000/register', {
+      const response = await fetch(`${process.env.NEXT_PUBLIC_BACKEND_URL}/register`, {
         method: 'POST',
         headers: { 'Content-Type': 'application/json' },
         body: JSON.stringify({
@@ -111,7 +111,7 @@ const ChatbotPage = () => {
     setInput(''); // Clear input field
 
     try {
-      const response = await fetch('http://localhost:8000/chat', {
+      const response = await fetch(`${process.env.NEXT_PUBLIC_BACKEND_URL}/chat`, {
         method: 'POST',
         headers: { 'Content-Type': 'application/json' },
         body: JSON.stringify({ 
